@@ -1,0 +1,45 @@
+ 
+
+
+ 
+.sxc-follow-buttons {
+    margin: 0 !important;                
+    padding: 0 !important;               
+    background-image: none !important;   
+    border: none !important;             
+    border-bottom: 0 !important;         
+}
+
+ 
+.sxc-follow-buttons .sxc-follow-button {
+    display: inline-block !important;    
+    margin: 0 !important;                
+    padding: 0 !important;               
+    background-image: none !important;   
+    border: none !important;             
+    border-bottom: 0 !important;         
+    list-style-type: none !important;    
+    -webkit-user-select: none;           
+    -moz-user-select: none;              
+}
+.sxc-follow-buttons .sxc-follow-button::before {
+    content: "" !important;              
+    content: none !important;            
+}
+.sxc-follow-buttons .sxc-follow-button::after {
+    content: "" !important;              
+    content: none !important;            
+}
+
+.sxc-follow-buttons .sxc-follow-button a {
+    display: block !important;           
+    border: none !important;             
+    border-bottom: 0 !important;         
+    box-shadow: none !important;         
+}
+
+.sxc-follow-buttons .sxc-follow-button a img {
+    margin: 0 !important;                
+    padding: 0 !important;               
+    vertical-align: top;
+}

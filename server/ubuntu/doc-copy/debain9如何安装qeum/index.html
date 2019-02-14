@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html>
+  <!-- OriginalSrc: https://linuxhint.com/install_qemu_debian/ -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How to Install and Use QEMU on Debian 9 – Linux Hint</title>
+    
+<link rel="stylesheet" id="ezoic-integration-css" href="assets/1548914965-1314dd35c3da5b3265321eb3e237b564.css" type="text/css" media="all">
+
+<link rel="stylesheet" id="spacexchimp_p005-bootstrap-tooltip-css-css" href="assets/1548914965-335e20c4d910edcbae6723be0a059595.css" type="text/css" media="all">
+
+<link rel="stylesheet" id="spacexchimp_p005-frontend-css-css" href="assets/1548914965-847c1a725d35800249e9b64b9a2d584b.css" type="text/css" media="all">
+
+<link rel="stylesheet" id="vce_font_0-css" href="assets/1548914965-d78343bc0644306bc6c2c3bc8eb7bc3e.css" type="text/css" media="screen">
+
+<link rel="stylesheet" id="vce_style-css" href="assets/1548914965-2cdaf41df5ca52fdf8b054477171746c.css" type="text/css" media="screen, print">
+
+<link rel="stylesheet" id="vce_child_load_scripts-css" href="assets/1548914965-ae38b8431114af789e184b5b864de092.css" type="text/css" media="screen">
+
+<link rel="stylesheet" id="meks-author-widget-css" href="assets/1548914965-49f4bfd9dc67d1a276ae6f202b217c81.css" type="text/css" media="all">
+
+<link rel="stylesheet" id="__EPYT__style-css" href="assets/1548914965-de4ad1f06e2a55d35df8b32cb5b48859.css" type="text/css" media="all">
+
+<link rel="stylesheet" id="codecolorer-css" href="assets/1548914965-aba4e2b639418e8c6370c960616a2a44.css" type="text/css" media="screen">
+<style>
+
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+
+</style>
+<style>
+
+
+                    .sxc-follow-buttons {
+                        text-align: center !important;
+                    }
+                    .sxc-follow-buttons .sxc-follow-button a img {
+                        width: 64px !important;
+                        height: 64px !important;
+                        margin: 5px !important;
+                    }
+                  
+
+</style>
+<style>
+
+body {background-color:#f0f0f0;}body,.mks_author_widget h3,.site-description,.meta-category a,textarea {font-family: 'Poppins';font-weight: 400;}h1,h2,h3,h4,h5,h6,blockquote,.vce-post-link,.site-title,.site-title a,.main-box-title,.comment-reply-title,.entry-title a,.vce-single .entry-headline p,.vce-prev-next-link,.author-title,.mks_pullquote,.widget_rss ul li .rsswidget,#bbpress-forums .bbp-forum-title,#bbpress-forums .bbp-topic-permalink {font-family: 'Poppins';font-weight: 400;}.main-navigation a,.sidr a{font-family: 'Poppins';font-weight: 400;}.vce-single .entry-content,.vce-single .entry-headline,.vce-single .entry-footer{width: 750px;}.vce-lay-a .lay-a-content{width: 750px;max-width: 750px;}.vce-page .entry-content,.vce-page .entry-title-page {width: 600px;}.vce-sid-none .vce-single .entry-content,.vce-sid-none .vce-single .entry-headline,.vce-sid-none .vce-single .entry-footer {width: 750px;}.vce-sid-none .vce-page .entry-content,.vce-sid-none .vce-page .entry-title-page,.error404 .entry-content {width: 600px;max-width: 600px;}body, button, input, select, textarea{color: #444444;}h1,h2,h3,h4,h5,h6,.entry-title a,.prev-next-nav a,#bbpress-forums .bbp-forum-title, #bbpress-forums .bbp-topic-permalink,.woocommerce ul.products li.product .price .amount{color: #444444;}a,.entry-title a:hover,.vce-prev-next-link:hover,.vce-author-links a:hover,.required,.error404 h4,.prev-next-nav a:hover,#bbpress-forums .bbp-forum-title:hover, #bbpress-forums .bbp-topic-permalink:hover,.woocommerce ul.products li.product h3:hover,.woocommerce ul.products li.product h3:hover mark,.main-box-title a:hover{color: #cf4d35;}.vce-square,.vce-main-content .mejs-controls .mejs-time-rail .mejs-time-current,button,input[type="button"],input[type="reset"],input[type="submit"],.vce-button,.pagination-wapper a,#vce-pagination .next.page-numbers,#vce-pagination .prev.page-numbers,#vce-pagination .page-numbers,#vce-pagination .page-numbers.current,.vce-link-pages a,#vce-pagination a,.vce-load-more a,.vce-slider-pagination .owl-nav > div,.vce-mega-menu-posts-wrap .owl-nav > div,.comment-reply-link:hover,.vce-featured-section a,.vce-lay-g .vce-featured-info .meta-category a,.vce-404-menu a,.vce-post.sticky .meta-image:before,#vce-pagination .page-numbers:hover,#bbpress-forums .bbp-pagination .current,#bbpress-forums .bbp-pagination a:hover,.woocommerce #respond input#submit,.woocommerce a.button,.woocommerce button.button,.woocommerce input.button,.woocommerce ul.products li.product .added_to_cart,.woocommerce #respond input#submit:hover,.woocommerce a.button:hover,.woocommerce button.button:hover,.woocommerce input.button:hover,.woocommerce ul.products li.product .added_to_cart:hover,.woocommerce #respond input#submit.alt,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt,.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,.woocommerce span.onsale,.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,.comments-holder .navigation .page-numbers.current,.vce-lay-a .vce-read-more:hover,.vce-lay-c .vce-read-more:hover{background-color: #cf4d35;}#vce-pagination .page-numbers,.comments-holder .navigation .page-numbers{background: transparent;color: #cf4d35;border: 1px solid #cf4d35;}.comments-holder .navigation .page-numbers:hover{background: #cf4d35;border: 1px solid #cf4d35;}.bbp-pagination-links a{background: transparent;color: #cf4d35;border: 1px solid #cf4d35 !important;}#vce-pagination .page-numbers.current,.bbp-pagination-links span.current,.comments-holder .navigation .page-numbers.current{border: 1px solid #cf4d35;}.widget_categories .cat-item:before,.widget_categories .cat-item .count{background: #cf4d35;}.comment-reply-link,.vce-lay-a .vce-read-more,.vce-lay-c .vce-read-more{border: 1px solid #cf4d35;}.entry-meta div,.entry-meta-count,.entry-meta div a,.comment-metadata a,.meta-category span,.meta-author-wrapped,.wp-caption .wp-caption-text,.widget_rss .rss-date,.sidebar cite,.site-footer cite,.sidebar .vce-post-list .entry-meta div,.sidebar .vce-post-list .entry-meta div a,.sidebar .vce-post-list .fn,.sidebar .vce-post-list .fn a,.site-footer .vce-post-list .entry-meta div,.site-footer .vce-post-list .entry-meta div a,.site-footer .vce-post-list .fn,.site-footer .vce-post-list .fn a,#bbpress-forums .bbp-topic-started-by,#bbpress-forums .bbp-topic-started-in,#bbpress-forums .bbp-forum-info .bbp-forum-content,#bbpress-forums p.bbp-topic-meta,span.bbp-admin-links a,.bbp-reply-post-date,#bbpress-forums li.bbp-header,#bbpress-forums li.bbp-footer,.woocommerce .woocommerce-result-count,.woocommerce .product_meta{color: #9b9b9b;}.main-box-title, .comment-reply-title, .main-box-head{background: #cf4d35;color: #ffffff;}.main-box-title a{color: #ffffff;}.sidebar .widget .widget-title a{color: #ffffff;}.main-box,.comment-respond,.prev-next-nav{background: #f9f9f9;}.vce-post,ul.comment-list > li.comment,.main-box-single,.ie8 .vce-single,#disqus_thread,.vce-author-card,.vce-author-card .vce-content-outside,.mks-bredcrumbs-container,ul.comment-list > li.pingback{background: #ffffff;}.mks_tabs.horizontal .mks_tab_nav_item.active{border-bottom: 1px solid #ffffff;}.mks_tabs.horizontal .mks_tab_item,.mks_tabs.vertical .mks_tab_nav_item.active,.mks_tabs.horizontal .mks_tab_nav_item.active{background: #ffffff;}.mks_tabs.vertical .mks_tab_nav_item.active{border-right: 1px solid #ffffff;}#vce-pagination,.vce-slider-pagination .owl-controls,.vce-content-outside,.comments-holder .navigation{background: #f3f3f3;}.sidebar .widget-title{background: #ffffff;color: #dd3333;}.sidebar .widget{background: #f9f9f9;}.sidebar .widget,.sidebar .widget li a,.sidebar .mks_author_widget h3 a,.sidebar .mks_author_widget h3,.sidebar .vce-search-form .vce-search-input,.sidebar .vce-search-form .vce-search-input:focus{color: #444444;}.sidebar .widget li a:hover,.sidebar .widget a,.widget_nav_menu li.menu-item-has-children:hover:after,.widget_pages li.page_item_has_children:hover:after{color: #cf4d35;}.sidebar .tagcloud a {border: 1px solid #cf4d35;}.sidebar .mks_author_link,.sidebar .tagcloud a:hover,.sidebar .mks_themeforest_widget .more,.sidebar button,.sidebar input[type="button"],.sidebar input[type="reset"],.sidebar input[type="submit"],.sidebar .vce-button,.sidebar .bbp_widget_login .button{background-color: #cf4d35;}.sidebar .mks_author_widget .mks_autor_link_wrap,.sidebar .mks_themeforest_widget .mks_read_more{background: #f3f3f3;}.sidebar #wp-calendar caption,.sidebar .recentcomments,.sidebar .post-date,.sidebar #wp-calendar tbody{color: rgba(68,68,68,0.7);}.site-footer{background: #373941;}.site-footer .widget-title{color: #ffffff;}.site-footer,.site-footer .widget,.site-footer .widget li a,.site-footer .mks_author_widget h3 a,.site-footer .mks_author_widget h3,.site-footer .vce-search-form .vce-search-input,.site-footer .vce-search-form .vce-search-input:focus{color: #ccd2d8;}.site-footer .widget li a:hover,.site-footer .widget a,.site-info a{color: #cf4d35;}.site-footer .tagcloud a {border: 1px solid #cf4d35;}.site-footer .mks_author_link,.site-footer .mks_themeforest_widget .more,.site-footer button,.site-footer input[type="button"],.site-footer input[type="reset"],.site-footer input[type="submit"],.site-footer .vce-button,.site-footer .tagcloud a:hover{background-color: #cf4d35;}.site-footer #wp-calendar caption,.site-footer .recentcomments,.site-footer .post-date,.site-footer #wp-calendar tbody,.site-footer .site-info{color: rgba(204,210,216,0.7);}.top-header,.top-nav-menu li .sub-menu{background: #2c2d34;}.top-header,.top-header a{color: #ffffff;}.top-header .vce-search-form .vce-search-input,.top-header .vce-search-input:focus,.top-header .vce-search-submit{color: #ffffff;}.top-header .vce-search-form .vce-search-input::-webkit-input-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input:-moz-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input::-moz-placeholder { color: #ffffff;}.top-header .vce-search-form .vce-search-input:-ms-input-placeholder { color: #ffffff;}.header-1-wrapper{height: 150px;padding-top: 15px;}.header-2-wrapper,.header-3-wrapper{height: 150px;}.header-2-wrapper .site-branding,.header-3-wrapper .site-branding{top: 15px;left: 0px;}.site-title a, .site-title a:hover{color: #23282d;}.site-description{color: #aaaaaa;}.main-header{background-color: #23282d;}.header-bottom-wrapper{background: #e64338;}.vce-header-ads{margin: 30px 0;}.header-3-wrapper .nav-menu > li > a{padding: 65px 15px;}.header-sticky,.sidr{background: rgba(230,67,56,0.95);}.ie8 .header-sticky{background: #23282d;}.main-navigation a,.nav-menu .vce-mega-menu > .sub-menu > li > a,.sidr li a,.vce-menu-parent{color: #ffffff;}.nav-menu > li:hover > a,.nav-menu > .current_page_item > a,.nav-menu > .current-menu-item > a,.nav-menu > .current-menu-ancestor > a,.main-navigation a.vce-item-selected,.main-navigation ul ul li:hover > a,.nav-menu ul .current-menu-item a,.nav-menu ul .current_page_item a,.vce-menu-parent:hover,.sidr li a:hover,.sidr li.sidr-class-current_page_item > a,.main-navigation li.current-menu-item.fa:before,.vce-responsive-nav{color: #ffffff;}#sidr-id-vce_main_navigation_menu .soc-nav-menu li a:hover {color: #ffffff;}.nav-menu > li:hover > a,.nav-menu > .current_page_item > a,.nav-menu > .current-menu-item > a,.nav-menu > .current-menu-ancestor > a,.main-navigation a.vce-item-selected,.main-navigation ul ul,.header-sticky .nav-menu > .current_page_item:hover > a,.header-sticky .nav-menu > .current-menu-item:hover > a,.header-sticky .nav-menu > .current-menu-ancestor:hover > a,.header-sticky .main-navigation a.vce-item-selected:hover{background-color: #ce3418;}.search-header-wrap ul {border-top: 2px solid #ffffff;}.vce-cart-icon a.vce-custom-cart span {background: #ffffff;font-family: 'Poppins';}.vce-border-top .main-box-title{border-top: 2px solid #cf4d35;}.tagcloud a:hover,.sidebar .widget .mks_author_link,.sidebar .widget.mks_themeforest_widget .more,.site-footer .widget .mks_author_link,.site-footer .widget.mks_themeforest_widget .more,.vce-lay-g .entry-meta div,.vce-lay-g .fn,.vce-lay-g .fn a{color: #FFF;}.vce-featured-header .vce-featured-header-background{opacity: 0.5}.vce-featured-grid .vce-featured-header-background,.vce-post-big .vce-post-img:after,.vce-post-slider .vce-post-img:after{opacity: 0.5}.vce-featured-grid .owl-item:hover .vce-grid-text .vce-featured-header-background,.vce-post-big li:hover .vce-post-img:after,.vce-post-slider li:hover .vce-post-img:after {opacity: 0.8}.vce-featured-grid.vce-featured-grid-big .vce-featured-header-background,.vce-post-big .vce-post-img:after,.vce-post-slider .vce-post-img:after{opacity: 0.5}.vce-featured-grid.vce-featured-grid-big .owl-item:hover .vce-grid-text .vce-featured-header-background,.vce-post-big li:hover .vce-post-img:after,.vce-post-slider li:hover .vce-post-img:after {opacity: 0.8}#back-top {background: #323232}.sidr input[type=text]{background: rgba(255,255,255,0.1);color: rgba(255,255,255,0.5);}.meta-image:hover a img,.vce-lay-h .img-wrap:hover .meta-image > img,.img-wrp:hover img,.vce-gallery-big:hover img,.vce-gallery .gallery-item:hover img,.vce_posts_widget .vce-post-big li:hover img,.vce-featured-grid .owl-item:hover img,.vce-post-img:hover img,.mega-menu-img:hover img{-webkit-transform: scale(1.1);-moz-transform: scale(1.1);-o-transform: scale(1.1);-ms-transform: scale(1.1);transform: scale(1.1);}.site-title a{text-transform: uppercase;}.site-description{text-transform: uppercase;}.nav-menu li a{text-transform: uppercase;}.main-box-title{text-transform: uppercase;}.sidebar .widget-title{text-transform: uppercase;}.site-footer .widget-title{text-transform: uppercase;}.vce-featured-link-article{text-transform: uppercase;}
+
+</style>
+<style>
+
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+
+</style>
+<style>
+
+</style>
+<style>
+div#wpbody a { color: #0000FF; } div#wpbody a:visited { color: #0000FF; } h1.entry-title { font-size: 38px; font-weight: bold; } h1 { font-size: 34px; font-weight: bold; } h2 { font-size: 28px; font-weight: bold; } h3 { font-size: 26px; font-weight: bold; } h4{ font-weight: bold; } .codecolorer, .codecolorer *, .codecolorer-container, .codecolorer-container * { font: 1.4rem/1.4rem Monaco, Lucida Console, monospace ! important; } .comment-form { margin-bottom: inherit; } .gglcptch_v1, .gglcptch_v2 { text-align: -webkit-right; } pre { background: #36363e; font-family: 'Poppins'; font-size: 14px; color: floralwhite; } .apsc-theme-1 .apsc-each-profile { margin: 3px; } input[type=text] { background: #fff; } div#wpbody { font-family: 'Arimo', sans-serif; font-weight: 400; font-size: 1.14286em; } div#wpbody blockquote { font-family: 'Arimo', sans-serif; font-weight: 400; font-size: 0.8em; font-style: italic; font-weight: bold; } div#newshl a { color: #000000; font-family: 'Arimo', sans-serif; font-weight: 400; font-size: 1.14286em; text-decoration: underline; } div#newshl a:visited { color: #000000; font-family: 'Arimo', sans-serif; font-weight: 400; font-size: 1.14286em; text-decoration: underline; }
+</style>
+<style>
+
+			 
+h1 {
+font-size:25px;
+color: #ba3925;}
+h2 {
+font-size:22px;
+color: #ba3925;
+opacity:0.9;}
+h3 {
+font-size:20px;
+color: #ba3925;
+}
+h4 {
+font-size:18px;
+color: #ba3925;
+opacity:0.9;}
+h5 {
+font-size:15px;
+color: #ba3925;}
+h6 {
+font-size:12px;
+color: #ba3925;}
+@media only screen and (max-width: 1200px){
+.codecolorer-container, .codecolorer {
+max-width: 100%;
+	}
+}
+@media only screen and (max-width: 1000px){
+.main-header {
+margin-bottom: 100px;
+	}
+}
+@media only screen and (max-width: 1000px){
+ .vce-header-ads {
+   display: block !important;
+   max-width: 100%;
+	 text-align:center;
+	}
+}
+		
+</style>
+<style>
+.ezoic-ad.box-3 { display:block !important;float:none !important;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;min-height:270px;min-width:300px;text-align:center !important; }
+.ezoic-ad.medrectangle-3 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:400px;min-width:580px;text-align:center !important; }
+.ezoic-ad.medrectangle-4 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:250px;min-width:300px;text-align:center !important; }
+.ezoic-ad.box-4 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:250px;min-width:300px;text-align:center !important; }
+.ezoic-ad.large-leaderboard-2 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:280px;min-width:336px;text-align:center !important; }
+.ezoic-ad.banner-1 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:400px;min-width:580px;text-align:center !important; }
+.ezoic-ad.leader-1 { display:block !important;float:none;margin-bottom:10px !important;margin-left:0px !important;margin-right:0px !important;margin-top:10px !important;min-height:90px;min-width:728px;text-align:center !important; }
+.ezoic-ad.nativedouble-1 { display:block !important;float:none;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;min-height:480px;min-width:100%;text-align:center !important; }
+.ezoic-ad.banner-2 { display:inline-block;float:none !important;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;min-height:620px;min-width:300px; }
+.ezoic-ad.medrectangle-1 { display:block !important;float:none !important;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;min-height:110px;min-width:970px;text-align:center !important; }
+.ezoic-ad.medrectangle-2 { display:inline-block;float:none;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;min-height:90px;min-width:970px; }
+.ezoic-ad{display:inline-block;}
+.adtester-container-122{display:none !important}
+.adtester-container-140{display:none !important}
+.adtester-container-107{display:none !important}
+.adtester-container-125{display:none !important}
+.adtester-container-151{display:none !important}
+.adtester-container-146{display:none !important}
+.adtester-container-132{display:none !important}
+.adtester-container-126{display:none !important}
+.adtester-container-139{display:none !important}
+.adtester-container-168{display:none !important}
+.adtester-container-153{display:none !important}
+.adtester-container-155{display:none !important}
+.adtester-container-177{display:none !important}
+.adtester-container-156{display:none !important}
+.adtester-container-130{display:none !important}
+.adtester-container-161{display:none !important}
+.adtester-container-160{display:none !important}
+.adtester-container-121{display:none !important}
+.adtester-container-145{display:none !important}
+.adtester-container-148{display:none !important}
+.adtester-container-144{display:none !important}
+.adtester-container-181{display:none !important}
+.adtester-container-131{display:none !important}
+.adtester-container-149{display:none !important}
+.adtester-container-180{display:none !important}
+.adtester-container-167{display:none !important}
+.adtester-container-154{display:none !important}
+.adtester-container-157{display:none !important}
+.adtester-container-165{display:none !important}
+.adtester-container-158{display:none !important}
+.adtester-container-129{display:none !important}
+.adtester-container-163{display:none !important}
+.adtester-container-101{display:none !important}
+.adtester-container-120{display:none !important}
+.adtester-container-110{display:none !important}
+.adtester-container-109{display:none !important}
+.adtester-container-112{display:none !important}
+.adtester-container-114{display:none !important}
+.adtester-container-150{display:none !important}
+.adtester-container-166{display:none !important}
+.adtester-container-179{display:none !important}
+.adtester-container-118{display:none !important}
+.adtester-container-133{display:none !important}
+.adtester-container-143{display:none !important}
+.adtester-container-103{display:none !important}
+.adtester-container-152{display:none !important}
+.adtester-container-176{display:none !important}
+.adtester-container-128{display:none !important}
+.adtester-container-178{display:none !important}
+.adtester-container-127{display:none !important}
+.adtester-container-162{display:none !important}
+.adtester-container-124{display:none !important}
+.adtester-container-113{display:none !important}
+.adtester-container-119{display:none !important}
+.adtester-container-164{display:none !important}
+
+		.ezmob-footer {
+			position: fixed; left: 0px; bottom: 0px; width: 100%; background: white; z-index: 100000;
+		}
+		body {
+			padding-bottom: 50px;
+		}
+		.ezmob-footer-desktop {
+			background-color:rgba(255, 255, 255, 0.8);
+			border-top:1px solid lightgray;
+			padding-top:5px;
+		}
+		.ezmob-footer-close {
+			cursor: pointer;
+			color: #b2b2b2;
+			border: 1px solid #b2b2b2;
+			border-radius: 20px;
+			background: #fff;
+			line-height: 20px;
+			display: inline-block;
+			font-size: 20px;
+			font-family: arial,sans-serif;
+			padding: 0 5px;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			height: 24px;
+			width: 21px;
+		}
+	
+</style>
+<style>
+.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}
+</style>
+<style>
+.ob-tcolor{color:rgb(68, 68, 68)} .ob-lcolor{color:rgb(207, 77, 53)} .ob-bgtcolor{background-color:rgb(68, 68, 68)} .item-link-container:hover .ob-tcolor{border-color:rgb(68, 68, 68)} 
+</style>
+<style>
+       
+.AR_1.ob-widget .ob-widget-items-container {margin:0;padding:0;}
+.AR_1.ob-widget .ob-widget-items-container .ob-clearfix {display:block;width:100%;float:none;clear:both;height:0px;line-height:0px;font-size:0px;}
+.AR_1.ob-widget .ob-widget-items-container.ob-multi-row {padding-top: 2%;}
+.AR_1.ob-widget .ob-dynamic-rec-container {position:relative;margin:0;padding;0;}
+.AR_1.ob-widget .ob-dynamic-rec-link,
+.AR_1.ob-widget .ob-dynamic-rec-link:hover {text-decoration:none;}
+.AR_1.ob-widget .ob-rec-image-container .ob-video-icon-container {position:absolute;left:0;height:50%;width:100%;text-align:center;top:25%;}
+.AR_1.ob-widget .ob-rec-image-container .ob-video-icon {display:inline-block;height:100%;float:none;opacity:0.7;transition: opacity 500ms;}
+.AR_1.ob-widget .ob-rec-image-container .ob-video-icon:hover {opacity:1;}
+.AR_1.ob-widget .ob_what{direction:ltr;clear:both;padding:5px 10px 0px;}
+            .AR_1 .ob_what a:after {content: "";;;background-image: url("");background-size:75% 75%;width:12px;height:12px;padding-left:4px;display:inline-block;background-repeat:no-repeat;background-position:right center;border-left:1px solid #999;}
+    .AR_1.ob-widget .ob_what a{color:#999;font-size:11px;font-family:arial;text-decoration: none;}
+.AR_1.ob-widget .ob_what.ob-hover:hover a{text-decoration: underline;}
+.AR_1.ob-widget .ob_amelia,
+.AR_1.ob-widget .ob_logo,
+.AR_1.ob-widget .ob_feed_logo,
+.AR_1.ob-widget .ob_sfeed_logo,
+.AR_1.ob-widget .ob_text_logo{vertical-align:baseline !important;display:inline-block;vertical-align:text-bottom;padding:0px 5px;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;}
+.AR_1.ob-widget .ob_amelia{background:url("") no-repeat center top;width:16px;height:16px;margin-bottom:-2px;}
+.AR_1.ob-widget .ob_logo{background:url("") no-repeat center top;width:67px;height:12px;}
+.AR_1.ob-widget .ob_text_logo{background:url("") no-repeat center top;width:67px;height:22px;}
+.AR_1.ob-widget .ob_feed_logo{background:url("") no-repeat center top;width:86px;height:23px;}
+.AR_1.ob-widget .ob_sfeed_logo{background:url("") no-repeat center top;width:140px;height:21px;}
+.AR_1.ob-widget .ob_sphere_logo{background:url("") no-repeat center top;width:93px;height:27px;vertical-align:baseline!important;display:inline-block;vertical-align:text-bottom;padding:0px 0px;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;}
+@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+.AR_1.ob-widget .ob_amelia{background:url("") no-repeat center top;width:16px;height:16px;margin-bottom:-2px; background-size:16px 32px;}
+.AR_1.ob-widget .ob_logo{background:url("") no-repeat center top;width:67px;height:12px; background-size:67px 24px;}
+.AR_1.ob-widget .ob_text_logo{background:url("") no-repeat center top;width:67px;height:20px; background-size:67px 40px;}
+.AR_1.ob-widget .ob_feed_logo{background:url("") no-repeat center top;width:86px;height:23px;background-size: 86px 23px;}
+}
+@media only screen and (max-width: 600px) {
+.AR_1.ob-widget .ob_sfeed_logo{width:90px;height:20px;background-size:90px 20px;}
+}
+.AR_1.ob-widget:hover .ob_amelia,
+.AR_1.ob-widget:hover .ob_logo,
+.AR_1.ob-widget:hover .ob_text_logo{background-position:center bottom;}
+  .AR_1.ob-widget .ob_what{text-align:right;}
+
+.AR_1.ob-widget .ob-rec-image-container .ob-rec-image {display:block;}
+       
+.AR_1.ob-widget .ob-rec-image-container {position:relative;}
+.AR_1.ob-widget .ob-rec-image-container .ob-image-ratio {height:0px;line-height:0px;padding-top:100.0%;}
+.AR_1.ob-widget .ob-rec-image-container img.ob-rec-image {width:100%;position:absolute;top:0;bottom:0;left:0;right:0;opacity:0;transition:all 750ms;}
+.AR_1.ob-widget .ob-rec-image-container img.ob-show {opacity:1;}
+.AR_1.ob-widget .ob-rec-image-container .ob-rec-label {position:absolute;bottom:0px;left:0px;padding:0px 3px;background-color:#666;color:white;font-size:10px;line-height:15px;}
+.AR_1.ob-widget {width:auto;min-width:360px;}
+.AR_1.ob-widget .ob-dynamic-rec-container {display:inline-block;vertical-align:top;min-width:50px;width:31.8%;box-sizing:border-box;-moz-box-sizing:border-box;}
+.AR_1.ob-widget .ob-unit.ob-rec-brandName,
+.AR_1.ob-widget .ob-unit.ob-rec-brandLogo-container,
+.AR_1.ob-widget .ob-rec-brandLogoAndName {display:inline-block;}
+.AR_1.ob-widget .ob-rec-brandLogo {width:20px;height:20px;}
+.AR_1.ob-widget .ob-rec-brandName {vertical-align:bottom;}
+.AR_1.ob-widget .ob-unit.ob-rec-brandName {vertical-align:super;}
+  .AR_1.ob-widget .ob-widget-items-container {direction: ltr;}
+  .AR_1.ob-widget .ob-dynamic-rec-container {margin-left:0;}
+  .AR_1.ob-widget .ob-dynamic-rec-container ~ .ob-dynamic-rec-container {margin:0 0 0 2.3%; }
+.AR_1.ob-widget .ob-widget-header {direction:ltr; font-weight:bold;}
+.AR_1.ob-widget .ob-unit {display:block;}
+.AR_1.ob-widget .ob-rec-text {max-height:53.0px;overflow:hidden;font-weight:bold;}
+.AR_1.ob-widget .ob-rec-source {}
+.AR_1.ob-widget .ob-rec-date {font-weight:bold;}
+
+
+
+
+       
+      
+.AR_1.ob-strip-layout .ob-widget-header {font-family:inherit;font-size:18px;color:black;padding-bottom:12px;padding-top:0px;}
+.AR_1.ob-strip-layout .ob-dynamic-rec-container {max-width:275px;}
+.AR_1.ob-strip-layout .ob-rec-text {font-family:inherit;color:black;padding:5px 0 0px;text-align:left;line-height:1.25;font-size:14px;}
+.AR_1.ob-strip-layout .ob-rec-text:hover {color:#463636;}
+.AR_1.ob-strip-layout .ob-rec-source {font-family:inherit;color:#888;padding:0px 0 5px;text-align:left;font-size:13px;}
+.AR_1.ob-strip-layout .ob-rec-date {font-family:inherit;color:black;padding:0px 0 0px;text-align:left;font-size:12px;}
+.AR_1.ob-strip-layout .ob-rec-author {font-family:inherit;color:black;padding:0px 0 0px;text-align:left;font-size:12px;}
+.AR_1.ob-strip-layout .ob-rec-description {font-family:inherit;color:black;padding:0px 0 0px;text-align:left;font-size:12px;}
+.AR_1.ob-strip-layout .ob-rec-brandName {font-family:inherit;padding:5px 0 0px;line-height:1.25;font-size:13px;font-weight:400;}
+.AR_1.ob-strip-layout .ob-rec-brandLogo {width:20px;height:20px;}    
+</style>
+<style>
+
+      .AR_1.ob-widget .ob-widget-items-container { margin: 0; padding: 0; margin-right: 17px;}.AR_1 img.ob-rec-image.ob-show { border: none!important;}@media (min-width: 1px) and (max-width: 450px) { .AR_1.ob-widget .ob-dynamic-rec-container { min-width: 50px; width: 100%; } .AR_1.ob-widget .ob-dynamic-rec-container~.ob-dynamic-rec-container { margin: 0 0 0 0; } .AR_1.ob-widget { width: auto; min-width: initial; }} .AR_1.ob-strip-layout .ob-dynamic-rec-container { max-width: 600px;} .AR_1.ob-strip-layout .ob-dynamic-rec-container { background: none; float: none;}
+    
+</style>
+
+    <style class="mx-wc-style">
+      .mx-wc-main img {max-width: 100%;}
+      .mx-wc-main{
+        box-sizing: content-box;
+        background-color: rgb(255, 255, 255) !important;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 15px 15px 80px 15px;
+      }
+
+      .mx-wc-main > .clipping-information{
+        text-align: left;
+        margin-top: 20px;
+        background-color: #eeeeee !important;
+        padding: 15px;
+        border-radius: 4px;
+        color: #333;
+        font-size: 14px !important;
+        line-height: 22px !important;
+      }
+      .mx-wc-main > .clipping-information a {
+        color: blue !important;
+        text-decoration: underline !important;
+      }
+      .mx-wc-main > .clipping-information label {
+        display: inline;
+        text-transform: none;
+      }
+      .mx-wc-main > .clipping-information label > code {
+        padding: 2px 8px;
+        background-color: rgba(200, 200, 200, 0.7)!important;
+        font-size: 14px;
+      }
+
+    </style>
+  </head>
+  <body style="background-color: #464646 !important; min-height: 100%; height: auto;" id="" class="post-template-default single single-post postid-30197 single-format-standard chrome vce-sid-right">
+    <div class="mx-wc-main">
+      <DIV id="vce-main" style="display: block; float: none; position: relative; top: 0; left: 0; border: 0px; width: 100%; min-width:100%; max-width: 100%; min-height: auto; max-height: 100%; height: auto; padding: 0px; margin: 0px;"><DIV id="main-wrapper" style="display: block; float: none; position: relative; top: 0; left: 0; border: 0px; width: 100%; min-width:100%; max-width: 100%; min-height: auto; max-height: 100%; height: auto; padding: 0px; margin: 0px;"><DIV id="content" class="container site-content vce-sid-right" style="display: block; float: none; position: relative; top: 0; left: 0; border: 0px; width: 100%; min-width:100%; max-width: 100%; min-height: auto; max-height: 100%; height: auto; padding: 0px; margin: 0px;"><DIV id="primary" class="vce-main-content" style="display: block; float: none; position: relative; top: 0; left: 0; border: 0px; width: 100%; min-width:100%; max-width: 100%; min-height: auto; max-height: 100%; height: auto; padding: 0px; margin: 0px;"><MAIN id="main" class="main-box main-box-single" style="display: block; float: none; position: relative; top: 0; left: 0; border: 0px; width: 100%; min-width:100%; max-width: 100%; min-height: auto; max-height: 100%; height: auto; padding: 0px; margin: 0px;"><article id="post-30197" class="vce-single post-30197 post type-post status-publish format-standard has-post-thumbnail hentry category-debian category-emulation category-qemu mx-wc-selected-elem" style="float: none; position: relative; top: 0px; left: 0px; margin: 0px; flex: unset; width: 100%; max-width: 100%; box-sizing: border-box;">
+
+			<header class="entry-header">
+							<span class="meta-category"><a href="https://linuxhint.com/category/debian/" class="category-1486">Debian</a> <span>•</span> <a href="https://linuxhint.com/category/emulation/" class="category-1964">emulation</a> <span>•</span> <a href="https://linuxhint.com/category/qemu/" class="category-1963">qemu</a></span>
+			
+			<h1 class="entry-title">How to Install and Use QEMU on Debian 9</h1>
+			<div class="entry-meta"><div class="meta-item date"><span class="updated">5 months ago</span></div><div class="meta-item author"><span class="vcard author"><span class="fn">by <a href="https://linuxhint.com/author/shahriar_shovon/">Shahriar Shovon</a></span></span></div></div>
+		</header>
+	
+	
+		
+		
+	    
+		<div class="vce-ad vce-ad-container"><!-- Ezoic - Before Single Post - under_page_title -->
+<span id="ezoic-pub-ad-placeholder-107"></span>
+<!-- End Ezoic - Before Single Post - under_page_title --></div>
+	
+	<div class="entry-content">
+		<div id="wpbody">
+QEMU is a fast processor emulation technology. QEMU does not depend on any hardware features. It does not need any kernel patches to run. So it is safe and easy to run.
+<p>In this article, I will show you how to install and use QEMU on Debian 9 Stretch. Let’s get started.</p><div class="iYBaBrKe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;"><!-- Ezoic - After P3 - native_mid -->
+<span id="ezoic-pub-ad-placeholder-117"></span><!-- placeholder 117 blocked.  Reason : inactive -->
+<!-- End Ezoic - After P3 - native_mid --></div>
+<h1>QEMU and KVM:</h1>
+<p>QEMU can be combined with KVM to use hardware virtualization features of your CPU. QEMU + KVM will get you almost near native hardware performance.</p>
+<p>Hardware virtualization feature is disabled by default on AMD and Intel CPU’s. So you will have to enable them manually if you do wish to use it.
+<p>I recommend you enable hardware virtualization. If you don’t do so, QEMU will be very slow.</p>
+<h2>Enabling Hardware Virtualization:</h2>
+<p>If you have Intel CPU, then all you have to do is, enable <strong>VT-x</strong> or <strong>VT-d</strong> from the BIOS of your motherboard.</p>
+<p>For AMD CPU, you have to enable <strong>AMD-v</strong> from the BIOS of your motherboard.</p>
+<p>If your CPU supports hardware virtualization, and you enabled it from the BIOS of your computer, then you can check whether Virtualization is enabled from your Debian 9 Stretch machine with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span>lscpu <span class="sy0">|</span> <span class="kw2">grep</span> Virt</div></div>
+<p>As you can see, hardware virtualization is enabled.
+<p><img class="aligncenter size-full wp-image-30199" src="assets/1548914965-77ee291aa931547bdc6bbc456e4184d0.png" alt="" width="1140" height="160" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<h3>Installing QEMU and KVM:</h3>
+<p>QEMU is not installed by default on Debian 9 Stretch. But it is available in the official package repository of Debian 9 Stretch. So you can easily install it.</p>
+<p>First, update the APT package repository cache with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">sudo</span> apt update</div></div>
+<p><img class="aligncenter size-full wp-image-30200" src="assets/1548914965-2295c76dfef4d0ac71034e85ef10cb2b.png" alt="" width="916" height="81" sizes="(max-width: 916px) 100vw, 916px"><span id="ezoic-pub-ad-placeholder-122" class="ezoic-adpicker-ad"></span></p>
+<p>The APT package repository cache should be updated.</p>
+<p><img class="aligncenter size-full wp-image-30201" src="assets/1548914965-3735e0581c00f85393bbcc9e426a698e.png" alt="" width="941" height="268" sizes="(max-width: 941px) 100vw, 941px"></p>
+<p>Now install QEMU with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">sudo</span> apt <span class="kw2">install</span> qemu qemu-kvm</div></div>
+<p><img class="aligncenter size-full wp-image-30202" src="assets/1548914965-197a08cd5cb7d321f115531e34b3a390.png" alt="" width="943" height="89" sizes="(max-width: 943px) 100vw, 943px"></p>
+<p>Now press <strong>y</strong> and then press <strong>&lt;Enter&gt;</strong> to continue.</p>
+<p><img class="aligncenter size-full wp-image-30203" src="assets/1548914965-875bed015118e7dc3099c9628fe3d43f.png" alt="" width="917" height="261" sizes="(max-width: 917px) 100vw, 917px"></p>
+<p>KVM and QEMU should be installed.</p>
+<p><img class="aligncenter size-full wp-image-30204" src="assets/1548914965-e81f889a3c66dc834d2bd3491eb5a393.png" alt="" width="1140" height="432" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<h3>Using QEMU and KVM:</h3>
+<p>In this section, I will show you how to install Alpine Linux on a QEMU + KVM virtual machine.</p>
+<p><strong><u>Creating a VM Directory:</u></strong></p>
+<p>First, create a directory where all your VM data will be stored. I will call this VM directory from now on.
+<p>Create a VM directory with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">mkdir</span> <span class="re5">-p</span> ~<span class="sy0">/</span>qemu<span class="sy0">/</span>alpine</div></div>
+<p><img class="aligncenter size-full wp-image-30205" src="assets/1548914965-16c3f6dcc0925b6f193dd8e728256aa6.png" alt="" width="1071" height="110" sizes="(max-width: 1071px) 100vw, 1071px"></p>
+<p>Now navigate to the VM directory with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw3">cd</span> ~<span class="sy0">/</span>qemu<span class="sy0">/</span>alpine</div></div>
+<p><img class="aligncenter size-full wp-image-30206" src="assets/1548914965-8d1c95e577438dbb8cdf856dd0f7cc11.png" alt="" width="1128" height="111" sizes="(max-width: 1128px) 100vw, 1128px"></p>
+<p><strong><u>Downloading Alpine Linux ISO Image:</u></strong></p>
+<p>Now download the Alpine Linux Standard ISO image from <a href="https://alpinelinux.org/downloads/">https://alpinelinux.org/downloads/</a> into your VM directory.</p>
+<p><img class="aligncenter size-full wp-image-30207" src="assets/1548914965-5d93e172f14daa7a7f794fbf23a60956.png" alt="" width="1043" height="595" sizes="(max-width: 1043px) 100vw, 1043px"><span id="ezoic-pub-ad-placeholder-160" class="ezoic-adpicker-ad"></span></p>
+<p>At the time of this writing, the ISO image is <strong>alpine-standard-3.8.0-x86_64.iso</strong></p>
+<p><img class="aligncenter size-full wp-image-30208" src="assets/1548914965-29df653802321cc053fddb7eee79512f.png" alt="" width="1140" height="118" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p><strong><u>Creating QEMU Image:</u></strong></p>
+<p>Now you have to create a QEMU image. It is a virtual hard drive where you will install Alpine Linux. QEMU has its own command to create a QEMU image.</p>
+<p>I am going to create a QEMU image <strong>alpine.img</strong> and allocate <strong>8 GB</strong> of disk space to it with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span>qemu-img create <span class="re5">-f</span> qcow2 alpine.img8G</div></div>
+<p><strong><u>NOTE:</u></strong> You can name the image something other than <strong>alpine.img</strong> and set the disk size to something other than <strong>8G</strong> (8 Giga Byte).</p>
+<p><img class="aligncenter size-full wp-image-30209" src="assets/1548914965-fa1458e6a5b1f200f9301bb80a5dc549.png" alt="" width="1140" height="76" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p>As you can see, <strong>alpine.img</strong> is created.</p>
+<p><img class="aligncenter size-full wp-image-30210" src="assets/1548914965-c44c5a6b931705c4842dbf8706571b37.png" alt="" width="1140" height="186" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p><strong><u>Starting the Alpine Installer:</u></strong></p>
+<p>Now you can start the QEMU emulation with KVM and install Alpine Linux on the image <strong>alpine.img</strong>.</p>
+<p>I am going to use a shell script <strong>install.sh</strong> to start the installation as I believe it makes the command easier to understand and modify later.<span id="ezoic-pub-ad-placeholder-140" class="ezoic-adpicker-ad"></span></p>
+<p>Now run the following command to create <strong>install.sh</strong>:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">nano</span> install.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30211" src="assets/1548914965-64d5372bf3565a3930c5aab10d65a05a.png" alt="" width="1131" height="78" sizes="(max-width: 1131px) 100vw, 1131px"></p>
+<p>And type in the following lines to it:</p>
+<p><img class="aligncenter size-full wp-image-30212" src="assets/1548914965-13aa5e11d0dc937bb4c44448af16b597.png" alt="" width="1249" height="416" sizes="(max-width: 1249px) 100vw, 1249px"></p>
+<p>Now save the file with <strong>&lt;Ctrl&gt; </strong>+ <strong>x</strong> and then press <strong>y</strong> and then press <strong>&lt;Enter&gt;</strong>.</p>
+<p><strong><u>NOTE:</u></strong> Here, <strong>-m 512</strong> means <strong>512 MB</strong> of memory (RAM) will be allocated to the virtual machine.</p>
+<p>Now make the script <strong>install.sh</strong> executable with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">chmod</span> +x install.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30213" src="assets/1548914965-5a9c7dd69292edb7abe75a400ad56dff.png" alt="" width="1140" height="93" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p>Now start the install script with:<span id="ezoic-pub-ad-placeholder-139" class="ezoic-adpicker-ad"></span></p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span>.<span class="sy0">/</span>install.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30214" src="assets/1548914965-b1b0f516392d7c95bf4b43f4cda149db.png" alt="" width="1114" height="84" sizes="(max-width: 1114px) 100vw, 1114px"></p>
+<p>As you can see, the Alpine installer has booted.</p>
+<p><img class="aligncenter size-full wp-image-30215" src="assets/1548914965-8e1362e769512cbb0b045cd56ed44e34.png" alt="" width="745" height="441" sizes="(max-width: 745px) 100vw, 745px"></p>
+<p>Now type in <strong>root</strong> and press <strong>&lt;Enter&gt;</strong>. You should be logged in.</p>
+<p><img class="aligncenter size-full wp-image-30216" src="assets/1548914965-30c10b5dce1bb41e247036d2722149ce.png" alt="" width="744" height="208" sizes="(max-width: 744px) 100vw, 744px"></p>
+<p>Now start the installer with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4"># </span>setup-alpine</div></div>
+<p><img class="aligncenter size-full wp-image-30217" src="assets/1548914965-1935fa5ec2ace2528e4425ec3ae2f818.png" alt="" width="752" height="52" sizes="(max-width: 752px) 100vw, 752px"></p>
+<p>Now type in your keyboard layout (I picked <strong>us</strong>) and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30218" src="assets/1548914965-a8ffcac9e961a4e9299ad6dbdecf7244.png" alt="" width="780" height="229" sizes="(max-width: 780px) 100vw, 780px"></p>
+<p>Select variant (I picked <strong>us</strong>) and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30219" src="assets/1548914965-10058d4f6384e7c092bc67129e0c12d2.png" alt="" width="765" height="274" sizes="(max-width: 765px) 100vw, 765px"></p>
+<p>Now type in your hostname and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30220" src="assets/1548914965-80a07a455c2dc3604625421fdfb46166.png" alt="" width="768" height="327" sizes="(max-width: 768px) 100vw, 768px"></p>
+<p>Now select your network interface. The default is <strong>eth0</strong>, which is correct. So I pressed <strong>&lt;Enter&gt; </strong>to select the default.</p>
+<p><img class="aligncenter size-full wp-image-30221" src="assets/1548914965-2f38c2993bd607bd9d825f0f9d167930.png" alt="" width="757" height="378" sizes="(max-width: 757px) 100vw, 757px"></p>
+<p>Now type in the IP address for your network interface. I will choose the default, which is <strong>dhcp</strong> assigned IP address. Once you’re done, press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30222" src="assets/1548914965-1e0060f8145c6473708d3fad8a328737.png" alt="" width="764" height="387" sizes="(max-width: 764px) 100vw, 764px"></p>
+<p>I selected <strong>dhcp</strong>, so I pressed <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30223" src="assets/1548914965-5f9a51a270eaf0e1bd013f55ec971a7f.png" alt="" width="755" height="410" sizes="(max-width: 755px) 100vw, 755px"></p>
+<p>Now type in your new <strong>root</strong> password and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30224" src="assets/1548914965-a5ea31affe53d10bc69f0587f66d1427.png" alt="" width="780" height="437" sizes="(max-width: 780px) 100vw, 780px"></p>
+<p>Now re-type the password and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30225" src="assets/1548914965-8461f6e343931fa72185ed5763f98af7.png" alt="" width="771" height="447" sizes="(max-width: 771px) 100vw, 771px"></p>
+<p>Now it’s time to select a timezone. The default is <strong>UTC</strong>, but you can list other supported timezones by pressing <strong>?</strong> and <strong>&lt;Enter&gt;</strong>. I am selecting the default.</p>
+<p><img class="aligncenter size-full wp-image-30226" src="assets/1548914965-d987160f0743e5c45ba1ef3bd7566a5f.png" alt="" width="754" height="444" sizes="(max-width: 754px) 100vw, 754px"></p>
+<p>Press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30227" src="assets/1548914965-00607652ab1d48dba7cdc3b93bdbbe04.png" alt="" width="756" height="442" sizes="(max-width: 756px) 100vw, 756px"></p>
+<p>Press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30228" src="assets/1548914965-84c1d170fba6be410aed028d5ca36042.png" alt="" width="754" height="446" sizes="(max-width: 754px) 100vw, 754px"></p>
+<p>Press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30229" src="assets/1548914965-2fdbd5bb89419d49e4238816fab05ca9.png" alt="" width="761" height="451" sizes="(max-width: 761px) 100vw, 761px"></p>
+<p>Type in <strong>sda</strong> and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30230" src="assets/1548914965-58a8e22b65480615b94d60e9bce0210d.png" alt="" width="829" height="438" sizes="(max-width: 829px) 100vw, 829px"></p>
+<p>Type in <strong>sys</strong> and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30231" src="assets/1548914965-65107186477df925144f07dce626c351.png" alt="" width="771" height="458" sizes="(max-width: 771px) 100vw, 771px"></p>
+<p>Now type in <strong>y</strong> and press <strong>&lt;Enter&gt;</strong>.</p>
+<p><img class="aligncenter size-full wp-image-30232" src="assets/1548914965-abbf06dff997690f65ab44445035693a.png" alt="" width="753" height="439" sizes="(max-width: 753px) 100vw, 753px"></p>
+<p>Alpine is being installed…</p>
+<p><img class="aligncenter size-full wp-image-30233" src="assets/1548914965-89a717772360868bbad9ede01ff36421.png" alt="" width="784" height="452" sizes="(max-width: 784px) 100vw, 784px"></p>
+<p>Alpine Linux is installed.</p>
+<p><img class="aligncenter size-full wp-image-30234" src="assets/1548914965-61caa957981051c08c923ee19a95f285.png" alt="" width="886" height="483" sizes="(max-width: 886px) 100vw, 886px"></p>
+<p><strong><u>Booting Alpine from alpine.img QEMU Image:</u></strong></p>
+<p>Now create another shell script <strong>start.sh</strong> in the VM directory with the following command:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">nano</span> start.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30235" src="assets/1548914965-9cdd9e0f2e6172cdb1ee9371fae96e5a.png" alt="" width="1133" height="86" sizes="(max-width: 1133px) 100vw, 1133px"></p>
+<p>Now add the following lines to it and save it.</p>
+<p><img class="aligncenter size-full wp-image-30236" src="assets/1548914965-2b7879c2beeb45153f205a0f42398b8d.png" alt="" width="1131" height="403" sizes="(max-width: 1131px) 100vw, 1131px"></p>
+<p>Make the script start.sh executable as follows:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span><span class="kw2">chmod</span> +x start.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30237" src="assets/1548914965-46bb28ed288d050189c1bdc238dff7c5.png" alt="" width="1112" height="103" sizes="(max-width: 1112px) 100vw, 1112px"></p>
+<p>Finally, you can boot into your newly installed Alpine OS with QEMU KVM as follows:</p>
+<div class="codecolorer-container bash default" style="overflow:auto;white-space:nowrap;width:435px;"><div class="bash codecolorer"><span class="co4">$ </span>.<span class="sy0">/</span>start.sh</div></div>
+<p><img class="aligncenter size-full wp-image-30238" src="assets/1548914965-68c11ddb9107127c3cfd07da6661eede.png" alt="" width="1134" height="84" sizes="(max-width: 1134px) 100vw, 1134px"></p>
+<p>As you can see, Alpine Linux booted from the QEMU image.</p>
+<p><img class="aligncenter size-full wp-image-30239" src="assets/1548914965-1b20e75a9419e86709a1d0c9e3ac4dd5.png" alt="" width="770" height="465" sizes="(max-width: 770px) 100vw, 770px"></p>
+<h4>Emulating Other Architectures with QEMU:</h4>
+<p>QEMU supports a lot of CPU architectures as you can see from the screenshot below.</p>
+<p><img class="aligncenter size-full wp-image-30240" src="assets/1548914965-2542f274eb8a3a357f1cebe4d8df2cc8.png" alt="" width="1140" height="406" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p>I used the <strong>kvm</strong> command in the earlier examples. It is actually a hardware virtualization enabled <strong>qemu-system-x86_64</strong>.</p>
+<p>You can replace all the <strong>kvm</strong> commands with <strong>qemu-system-x86_64</strong> command in the earlier examples and it would still work. But it will run slowly as it will not use hardware virtualization.</p>
+<p><img class="aligncenter size-full wp-image-30241" src="assets/1548914965-cc5d803964f6b8e0597dd8e487ec8e69.png" alt="" width="1140" height="482" sizes="(max-width: 1140px) 100vw, 1140px"></p>
+<p>So that’s how you install and use QEMU on Debian 9 Stretch. Thanks for reading this article.
+</p></div>
+
+    </div>
+  </body>
+</html>

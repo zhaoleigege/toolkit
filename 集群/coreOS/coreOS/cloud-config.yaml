@@ -1,0 +1,11 @@
+#cloud-config
+
+hostname: das-01
+
+users:
+  - name: coreos
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNOx5Kmy965mNddSyAWeUwkWcfZpnlPHeFyFqk236VJuxeKt1ivvxesO646lMEMQgPP3fLGgyBZsoMKhJhLwARErBTn77LUcUS/km0ca6UpuEywSsuegRbjYVK1uBVGvPdYGcl1QOFnzFXRcQwUB7L+Ncm/rfcn05w02HSF8kgytS9+jE61iZa44IdPfIaa9LwYF7fDmgPp5wKBhP1Tjiq1DzUDoonvPsqYwFA9GQuX34nK2oO49fPyCp9BAOhZN8PJeShzdAniHCnsUncMkvOnWnN5nsAZjalIjQb+buVqZJuxxVmNkDtQykPGaDdC2EeNCf122HNCZ3i/oZ/gMtz buse@leigedeMAC.local
+    groups:
+      - sudo
+      - docker

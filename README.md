@@ -22,3 +22,11 @@
 #### deepin
 
 1. [deepin裸机配置](./server/deepin/Deepin.md)
+
+#### coreOS搭建
+
+1. [搭建coreOS](./集群/coreOS/coreOS安装.MD)
+
+#### rancher安装
+
+1. [安装rancher](./集群/rancher/rancher安装.MD)

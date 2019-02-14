@@ -16,7 +16,7 @@
 
 1. [ubuntu解决中文显示异常问题](./server/ubuntu/ubuntu解决中文显示异常的方法.md)
 2. [ubuntu安装zsh](./server/ubuntu/Ubuntu配置ZSH.md)
-3. [ubuntu删除下载的应用程序](./server/ubuntu/Ubuntu删除下载的应用程序.md)
+3. [ubuntu相关命令](./server/ubuntu/ubuntu相关命令.md)
 4. [debain如下安装和启动qemu](./server/ubuntu/debain如下安装和启动qemu.md)
 
 #### deepin

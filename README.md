@@ -9,7 +9,7 @@
 
 #### centos
 
-1. [centos通过anaconda-ks.cfg自动安装](./server/centos/Centos7 anaconda-ks.cfg自动化centos安装.md)
+1. [centos通过anaconda-ks.cfg自动安装](./server/centos/Centos7+anaconda-ks.cfg自动化centos安装.md)
 2. [centos配置SSH](./server/centos/centos7配置SSH.md)
 
 #### ubuntu

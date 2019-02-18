@@ -86,7 +86,15 @@
 
 5. 基本开发环境的配置
 
-   1. 安装docker
+   1. 基本网络访问命令
+
+      由于最基本的centos中没有网络访问相关的命令，可以通过如下的包来获得相关命令
+
+      ```shell
+      yum install -y net-tools
+      ```
+
+   2. 安装docker
 
       ```shell
       # 添加yum软件源
@@ -113,9 +121,9 @@
       docker run hello-world
       ```
 
-   2. 下载docker-compose
+   3. 下载docker-compose
 
-      ```shell sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
+      ```shell 
       curl -L https://github.com/docker/compose/releases/download/${version}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
       # ${version}前往https://github.com/docker/compose/releases/ 查看并自行选择
       sudo chmod +x /usr/local/bin/docker-compose
@@ -127,7 +135,7 @@
       docker-compose --version
       ```
 
-   3. 下载git
+   4. 下载git
 
       ```shell
       sudo yum install git
@@ -135,17 +143,17 @@
       git --version
       ```
 
-   4. 下载java
+   5. 下载java
 
       ```shell
       curl -o java.tar.gz https://download.java.net/java/GA/jdk11/9/GPL/openjdk-${version}_linux-x64_bin.tar.g
       # 版本查看官网https://jdk.java.net/11/
       tar -xvf java.tar.gz
-       mv jdk-${version}/ java
-       echo "export PATH=$PATH:/home/das/java/bin" >> .bashrc
+      mv jdk-${version}/ java
+      echo "export PATH=$PATH:/home/das/java/bin" >> .bashrc
       ```
 
-   5. 下载maven
+   6. 下载maven
 
       ```shell
       curl -o maven.tar.gz http://mirrors.hust.edu.cn/apache/maven/maven-3/${version}/binaries/apache-maven-3.6.0-bin.tar.gz

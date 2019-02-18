@@ -17,6 +17,7 @@
 1. [centos安装](./server/centos/centos安装.md)
 2. [centos通过anaconda-ks.cfg自动安装](./server/centos/Centos7%20anaconda-ks.cfg自动化centos安装.md)
 3. [centos配置SSH](./server/centos/centos7配置SSH.md)
+4. [centos使用教程](./server/centos/centos使用教程.md)
 
 #### ubuntu
 

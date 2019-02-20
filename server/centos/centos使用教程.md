@@ -6,6 +6,6 @@
    firewall-cmd --permanent --add-port=8080/tcp	# 打开8080端口
    firewall-cmd --reload							# 重新加载
    ```
-
    
+
 

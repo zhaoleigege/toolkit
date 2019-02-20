@@ -99,7 +99,7 @@
           ```shell
           connect() failed (111: Connection refused) while connecting to upstream
           ```
-          解决方法
+          [解决方法](https://serverfault.com/questions/317393/connect-failed-111-connection-refused-while-connecting-to-upstream/576488#576488)
 
           ```shell
           # 修改localhost为127.0.0.1

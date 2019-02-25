@@ -52,11 +52,11 @@
       <span style="color: red;">nginx配置只能用**空格**，不要使用`tab`</span>
 
       * [负载均衡配置](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
-
-        * 在`http`中添加`upstream`
           ```shell
           sudo vi /etc/nginx/nginx.conf
           ```
+        * 在`http`中添加`upstream`
+         
           ```shell
           http {
               ...

@@ -10,7 +10,7 @@
    systemctl enable nginx
    ```
 
-2. 卸载centos
+2. 卸载nginx
 
    ```shell
    service nginx stop
@@ -56,7 +56,7 @@
           sudo vi /etc/nginx/nginx.conf
           ```
         * 在`http`中添加`upstream`
-         
+        
           ```shell
           http {
               ...

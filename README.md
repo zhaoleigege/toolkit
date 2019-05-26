@@ -45,3 +45,7 @@
 #### rancher安装
 
 1. [安装rancher](./集群/rancher/rancher安装.MD)
+
+#### 发现的小工具
+
+1. [m3u8流视频的下载](./小工具/m3u8流视频下载.md)

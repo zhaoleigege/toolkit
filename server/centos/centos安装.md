@@ -10,7 +10,8 @@
 2. 写入iso镜像到U盘中
 
    ```shell
-   sudo fdisk -l 	# 查找U盘在系统的挂载点
+   sudo fdisk -l 	# 查找U盘在系统的挂载点(Linux)
+   diskutil list # (Mac OS)
    sudo dd bs=4M if=.../CentOS-7-x86_64-Minimal-1810.iso of=/dev/sdb	# iso写入到u盘中
    ```
 
